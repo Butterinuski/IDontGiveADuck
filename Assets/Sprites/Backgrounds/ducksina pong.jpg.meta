@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 18388008ee8a34b4480a593d9be5b0d1
+guid: 239255b52edce17409a3eee3a9d5e075
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5817799449637031085
-    second: pond_0
+      213: 3212862235874538380
+    second: ducksina pong_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pond_0
+      name: ducksina pong_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 640
-        height: 400
+        width: 3200
+        height: 2129
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dac041286c9fcb050800000000000000
-      internalID: 5817799449637031085
+      spriteID: c83b1995e21669c20800000000000000
+      internalID: 3212862235874538380
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pond_0: 5817799449637031085
+      ducksina pong_0: 3212862235874538380
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

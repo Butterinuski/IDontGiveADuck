@@ -30,10 +30,17 @@ public class UIManager : MonoBehaviour
     [Header("Game Over Panel")]
     [SerializeField] private GameObject gameOverPanel;       // Container for game over UI
     [SerializeField] private TextMeshProUGUI gameOverTitle;  // "Level Complete!" or "Level Failed!"
-    [SerializeField] private TextMeshProUGUI finalScoreText; // Shows final score or restart message
+    [SerializeField] private TextMeshProUGUI RestartText; // Shows final score or restart message
     [SerializeField] private Button restartButton;           // Button to restart current level
-    [SerializeField] private Button nextLevelButton;         // Button to go to next level
-    
+    [SerializeField] private Image Image;
+    //[SerializeField] private Button nextLevelButton;         // Button to go to next level
+
+    [Header("Success Panel")]
+    [SerializeField] private GameObject successPanel;
+    //[SerializeField] private TextMeshProUGUI finalScoreText;
+    [SerializeField] private TextMeshProUGUI finalScoreText;
+    [SerializeField] private Button nextLevelButton;
+
     [Header("Pause Panel")]
     [SerializeField] private GameObject pausePanel;          // Container for pause menu
     [SerializeField] private Button resumeButton;            // Button to resume game
@@ -329,13 +336,13 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void ShowLevelComplete()
     {
-        if (gameOverPanel != null)
+        if (successPanel != null)
         {
-            gameOverPanel.SetActive(true);
+            successPanel.SetActive(true);
 
             // Set the title text
-            if (gameOverTitle != null)
-                gameOverTitle.text = "Level Complete!";
+            //if (gameOverTitle != null)
+            //    gameOverTitle.text = "Level Complete!";
 
             // Show the final score
             if (finalScoreText != null && GameManager.Instance != null)
@@ -364,16 +371,17 @@ public class UIManager : MonoBehaviour
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
-            
+            HideHUDElements();
+
             if (gameOverTitle != null)
                 gameOverTitle.text = "Level Failed!";
             
-            if (finalScoreText != null && GameManager.Instance != null)
-                finalScoreText.text = "Restart from Level 1";
+            if (RestartText != null && GameManager.Instance != null)
+                RestartText.text = "Restart from Level 1";
             
             // Hide next level button since player failed
-            if (nextLevelButton != null)
-                nextLevelButton.gameObject.SetActive(false);
+            //if (nextLevelButton != null)
+                //nextLevelButton.gameObject.SetActive(false);
         }
     }
     
@@ -408,6 +416,7 @@ public class UIManager : MonoBehaviour
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
         if (pausePanel != null) pausePanel.SetActive(false);
         if (instructionsPanel != null) instructionsPanel.SetActive(false);
+        if (successPanel != null) successPanel.SetActive(false);
     }
     
     #endregion
