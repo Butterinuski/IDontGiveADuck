@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool enableTestTools = true; // Enable/disable test tools in inspector
     
     [Header("Current Game State")]
-    [SerializeField] private int score = 0;             // Player's current score
+    [SerializeField] private int score;             // Player's current score
     [SerializeField] private int lives = 1;             // Remaining lives
     [SerializeField] private float timeLeft = 30f;      // Time remaining in current level
     [SerializeField] private int goodDucksClicked = 0;  // Number of good ducks clicked
@@ -536,7 +536,7 @@ public class GameManager : MonoBehaviour
     
     // Properties that other systems can access to get game state
     // These provide read-only access to private variables
-    public int Score => score;
+    public float Score => score;
     public int Lives => lives;
     public float TimeLeft => timeLeft;
     public GameState CurrentState => currentState;
