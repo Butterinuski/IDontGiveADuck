@@ -23,9 +23,10 @@ public class UIManager : MonoBehaviour
     [Header("HUD Elements")]
     [SerializeField] private TextMeshProUGUI scoreText;      // Shows current score
     [SerializeField] private TextMeshProUGUI timerText;      // Shows time remaining
-    [SerializeField] private TextMeshProUGUI livesText;      // Shows remaining lives
+    //[SerializeField] private TextMeshProUGUI livesText;      // Shows remaining lives
     [SerializeField] private TextMeshProUGUI levelText;      // Shows current level number
     [SerializeField] private TextMeshProUGUI progressText;   // Shows progress (ducks clicked/required)
+    [SerializeField] private Image HUDdisplay;
     
     [Header("Game Over Panel")]
     [SerializeField] private GameObject gameOverPanel;       // Container for game over UI
@@ -37,7 +38,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Success Panel")]
     [SerializeField] private GameObject successPanel;
-    //[SerializeField] private TextMeshProUGUI finalScoreText;
+    [SerializeField] private TextMeshProUGUI levelCompletedTitle;
     [SerializeField] private TextMeshProUGUI finalScoreText;
     [SerializeField] private Button nextLevelButton;
 
@@ -94,7 +95,7 @@ public class UIManager : MonoBehaviour
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnScoreChanged += UpdateScore;        // When score changes
-            GameManager.Instance.OnLivesChanged += UpdateLives;        // When lives change
+            //GameManager.Instance.OnLivesChanged += UpdateLives;        // When lives change
             GameManager.Instance.OnTimeChanged += UpdateTimer;         // When time changes
             GameManager.Instance.OnGameStateChanged += UpdateGameState; // When game state changes
             GameManager.Instance.OnLevelLoaded += UpdateLevelInfo;     // When new level loads
@@ -115,7 +116,7 @@ public class UIManager : MonoBehaviour
         if (GameManager.Instance != null)
         {
             GameManager.Instance.OnScoreChanged -= UpdateScore;
-            GameManager.Instance.OnLivesChanged -= UpdateLives;
+            //GameManager.Instance.OnLivesChanged -= UpdateLives;
             GameManager.Instance.OnTimeChanged -= UpdateTimer;
             GameManager.Instance.OnGameStateChanged -= UpdateGameState;
             GameManager.Instance.OnLevelLoaded -= UpdateLevelInfo;
@@ -190,11 +191,11 @@ public class UIManager : MonoBehaviour
     /// <summary>
     /// Updates the lives display
     /// </summary>
-    public void UpdateLives(int lives)
-    {
-        if (livesText != null)
-            livesText.text = $"Lives: {lives}";
-    }
+    //public void UpdateLives(int lives)
+    //{
+    //    if (livesText != null)
+    //        livesText.text = $"Lives: {lives}";
+    //}
     
     /// <summary>
     /// Updates level information when a new level is loaded
@@ -267,9 +268,10 @@ public class UIManager : MonoBehaviour
     {
         if (scoreText != null) scoreText.gameObject.SetActive(false);
         if (timerText != null) timerText.gameObject.SetActive(false);
-        if (livesText != null) livesText.gameObject.SetActive(false);
+        //if (livesText != null) livesText.gameObject.SetActive(false);
         if (levelText != null) levelText.gameObject.SetActive(false);
         if (progressText != null) progressText.gameObject.SetActive(false);
+        if (HUDdisplay != null) HUDdisplay.gameObject.SetActive(false);
     }
     
     /// <summary>
@@ -280,9 +282,10 @@ public class UIManager : MonoBehaviour
     {
         if (scoreText != null) scoreText.gameObject.SetActive(true);
         if (timerText != null) timerText.gameObject.SetActive(true);
-        if (livesText != null) livesText.gameObject.SetActive(true);
+        //if (livesText != null) livesText.gameObject.SetActive(true);
         if (levelText != null) levelText.gameObject.SetActive(true);
         if (progressText != null) progressText.gameObject.SetActive(true);
+        if (HUDdisplay != null) HUDdisplay.gameObject.SetActive(true);
     }
     
     #endregion
@@ -339,6 +342,7 @@ public class UIManager : MonoBehaviour
         if (successPanel != null)
         {
             successPanel.SetActive(true);
+            HideHUDElements();
 
             // Set the title text
             //if (gameOverTitle != null)
@@ -391,12 +395,12 @@ public class UIManager : MonoBehaviour
     private void ShowGameComplete()
     {
         HideHUDElements();
-        if (gameOverPanel != null)
+        if (successPanel != null)
         {
-            gameOverPanel.SetActive(true);
+            successPanel.SetActive(true);
             
-            if (gameOverTitle != null)
-                gameOverTitle.text = "Game Complete";
+            if (levelCompletedTitle != null)
+                levelCompletedTitle.text = "Game Complete";
             
             if (finalScoreText != null && GameManager.Instance != null)
                 finalScoreText.text = $"Final Score: {GameManager.Instance.Score:N0}";

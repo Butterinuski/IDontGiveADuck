@@ -35,9 +35,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip levelCompleteSound; // Sound when level is won
     [SerializeField] private AudioClip gameOverSound;      // Sound when level is lost
     
-    [Header("Duck Sounds")]
-    [SerializeField] private AudioClip duckClickDecoySound; // Sound when clicking decoy duck
-    [SerializeField] private AudioClip duckClickGoodSound;  // Sound when clicking good duck
+    //[Header("Duck Sounds")]
+    //[SerializeField] private AudioClip duckClickDecoySound; // Sound when clicking decoy duck
+    //[SerializeField] private AudioClip duckClickGoodSound;  // Sound when clicking good duck
     
     [Header("Volume Settings")]
     [Range(0f, 1f)] public float masterVolume = 1f;   // Overall volume control
@@ -292,24 +292,24 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Plays sound when player clicks a decoy duck
     /// </summary>
-    public void PlayDuckClickDecoy(Vector3 position)
-    {
-        if (duckClickDecoySound != null)
-        {
-            PlaySFXAtPosition(duckClickDecoySound, position);
-        }
-    }
+    //public void PlayDuckClickDecoy(Vector3 position)
+    //{
+    //    if (duckClickDecoySound != null)
+    //    {
+    //        PlaySFXAtPosition(duckClickDecoySound, position);
+    //    }
+    //}
     
-    /// <summary>
-    /// Plays sound when player clicks a good duck
-    /// </summary>
-    public void PlayDuckClickGood(Vector3 position)
-    {
-        if (duckClickGoodSound != null)
-        {
-            PlaySFXAtPosition(duckClickGoodSound, position);
-        }
-    }
+    ///// <summary>
+    ///// Plays sound when player clicks a good duck
+    ///// </summary>
+    //public void PlayDuckClickGood(Vector3 position)
+    //{
+    //    if (duckClickGoodSound != null)
+    //    {
+    //        PlaySFXAtPosition(duckClickGoodSound, position);
+    //    }
+    //}
     
     #endregion
     

@@ -10,7 +10,7 @@ public abstract class BaseDuck : MonoBehaviour
     [Header("Base Duck Properties")]
     [SerializeField] protected int pointValue = 1;
     [SerializeField] protected float lifetime = 5f;
-    [SerializeField] protected float moveSpeed = 0f; // For future moving ducks
+    [SerializeField] protected float moveSpeed = 1f; // For future moving ducks
     
     [Header("Visual Feedback")]
     [SerializeField] protected ParticleSystem destroyEffect;
