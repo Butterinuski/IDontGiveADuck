@@ -112,10 +112,10 @@ public class DecoyDuck : BaseDuck
     private void PlayPenaltyEffects()
     {
         // Use AudioManager for sound
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.PlayDuckClickDecoy(transform.position);
-        }
+        //if (AudioManager.Instance != null)
+        //{
+        //    AudioManager.Instance.PlayDuckClickDecoy(transform.position);
+        //}
         
         // Particle effect (different from good duck)
         if (penaltyParticles != null)

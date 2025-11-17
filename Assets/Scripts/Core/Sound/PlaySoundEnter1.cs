@@ -1,16 +1,14 @@
 using UnityEngine;
 
-public class PlaySoundEnter1 : MonoBehaviour
+public class PlaySoundEnter1 : StateMachineBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private SoundType sound;
+    [SerializeField, Range(0, 1)] private float volume = 1;
 
-    // Update is called once per frame
-    void Update()
+
+
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        SoundManager.PlaySound(sound, volume);
     }
 }

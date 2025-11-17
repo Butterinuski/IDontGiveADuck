@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -383,7 +385,8 @@ public class GameManager : MonoBehaviour
         
         score += duck.PointValue;
         goodDucksClicked++;
-        
+        SoundManager.PlaySound(SoundType.GoodDucks);
+
         OnScoreChanged?.Invoke(score);
         
         // Check win condition - player got required good ducks

@@ -93,10 +93,10 @@ public class GoodDuck : BaseDuck
         }
         
         // Sound effect - use AudioManager for consistency
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.PlayDuckClickGood(transform.position);
-        }
+        //if (AudioManager.Instance != null)
+        //{
+        //    SoundManager.Instance.PlayDuckClickGood(transform.position);
+        //}
         
         // Floating score text (optional)
         if (successTextPrefab != null)
