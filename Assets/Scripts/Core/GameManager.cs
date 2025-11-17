@@ -41,7 +41,8 @@ public class GameManager : MonoBehaviour
     private GameState currentState = GameState.Menu;    // Current game state
     private float levelStartTime;                       // When the level started
     private int totalDucksSpawned = 0;                  // Total ducks spawned this level
-    
+    [SerializeField] private ParticleSystem waterParticles;
+
     // Events that other systems can subscribe to
     // This creates loose coupling between systems
     public System.Action<int> OnScoreChanged;           // Fired when score changes
@@ -386,6 +387,7 @@ public class GameManager : MonoBehaviour
         score += duck.PointValue;
         goodDucksClicked++;
         SoundManager.PlaySound(SoundType.GoodDucks);
+        //ParticleSystem effect = Instantiate(waterParticles, transform.position, transform.rotation);
 
         OnScoreChanged?.Invoke(score);
         
