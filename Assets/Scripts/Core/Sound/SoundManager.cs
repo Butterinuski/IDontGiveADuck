@@ -7,16 +7,21 @@ using System;
 public enum SoundType
 {
    GoodDucks,
-   BadDucks
+   BadDucks,
+   ClickSound,
+   WaterParticle
 }
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
 public class SoundManager : MonoBehaviour
 {
-
+    [Header("SoundList")]
     [SerializeField] private SoundList[] soundlist;
+
+    [Header("Referneces")]
     private static SoundManager instance;
     public AudioSource audioSource;
+    [SerializeField] Slider volumeSlider;
 
     //public Slider VolumeSlider;
 
@@ -29,31 +34,31 @@ public class SoundManager : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        //if (PlayerPrefs.HasKey("soundVolume"))
-        //    LoadVolume();
-        //else
-        //{
-        //    PlayerPrefs.SetFloat("soundVolume", 1);
-        //    LoadVolume();
-        //}
+        if (PlayerPrefs.HasKey("soundVolume"))
+            LoadVolume();
+        else
+        {
+            PlayerPrefs.SetFloat("soundVolume", 1);
+            LoadVolume();
+        }
 
 
     }
-    //public void SetVolume()
-    //{
-    //    AudioListener.volume = VolumeSlider.value;
-    //}
+    public void SetVolume()
+    {
+        AudioListener.volume = volumeSlider.value;
+    }
 
-    //public void SaveVolume()
-    //{
-    //    PlayerPrefs.SetFloat("soundVolume", VolumeSlider.value);
-    //    SaveVolume();
-    //}
+    public void SaveVolume()
+    {
+        PlayerPrefs.SetFloat("soundVolume", volumeSlider.value);
+        SaveVolume();
+    }
 
-    //public void LoadVolume()
-    //{
-    //    VolumeSlider.value = PlayerPrefs.GetFloat("soundVolume");
-    //}
+    public void LoadVolume()
+    {
+        volumeSlider.value = PlayerPrefs.GetFloat("soundVolume");
+    }
 
     public static void PlaySound(SoundType Sound, float volume = 1)
     {
