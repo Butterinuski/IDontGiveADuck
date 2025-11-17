@@ -387,6 +387,7 @@ public class GameManager : MonoBehaviour
         score += duck.PointValue;
         goodDucksClicked++;
         SoundManager.PlaySound(SoundType.GoodDucks);
+        SoundManager.PlaySound(SoundType.WaterParticle);
         //ParticleSystem effect = Instantiate(waterParticles, transform.position, transform.rotation);
 
         OnScoreChanged?.Invoke(score);

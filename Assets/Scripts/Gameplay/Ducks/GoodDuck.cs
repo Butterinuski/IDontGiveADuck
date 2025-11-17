@@ -33,7 +33,7 @@ public class GoodDuck : BaseDuck
         }
         
         // Play success feedback
-        PlaySuccessEffects();
+        //PlaySuccessEffects();
         
         // Destroy duck
         DestroyDuck();
