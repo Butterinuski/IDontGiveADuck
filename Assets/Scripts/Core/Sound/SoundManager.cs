@@ -9,7 +9,8 @@ public enum SoundType
    GoodDucks,
    BadDucks,
    ClickSound,
-   WaterParticle
+   WaterParticle,
+   LowTimer
 }
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]

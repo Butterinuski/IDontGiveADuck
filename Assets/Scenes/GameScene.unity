@@ -4118,9 +4118,6 @@ MonoBehaviour:
   actionTheme: {fileID: 8300000, guid: b77acbb374058480dbeae07444542e03, type: 3}
   challengeTheme: {fileID: 8300000, guid: ae40a015c678644b0ac6139e22717c04, type: 3}
   bossTheme: {fileID: 8300000, guid: ab372a7a374be074cb54cb03af2b1625, type: 3}
-  levelStartSound: {fileID: 0}
-  levelCompleteSound: {fileID: 0}
-  gameOverSound: {fileID: 0}
   masterVolume: 1
   musicVolume: 0.5
   sfxVolume: 1
@@ -4328,14 +4325,20 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 4b396896ef547de46a948fe15c48c4bf, type: 3}
     - {fileID: 8300000, guid: 54f0121495ebb194089a0c74cafbce15, type: 3}
   - name: BadDucks
-    Sounds: []
+    Sounds:
+    - {fileID: 8300000, guid: a07037e2792c7dd418b9dda04bdb54cd, type: 3}
+    - {fileID: 8300000, guid: 5fe12cc487901ce4aa5df3d64fc67ab3, type: 3}
+    - {fileID: 8300000, guid: 989a5063e86ed4b44baa738522810bd7, type: 3}
   - name: ClickSound
-    Sounds: []
+    Sounds:
+    - {fileID: 0}
   - name: WaterParticle
     Sounds:
     - {fileID: 8300000, guid: 02d8f640915c29b4097fa05c93dff0e2, type: 3}
     - {fileID: 8300000, guid: 70fa66ce0bcacb34aaa5b308f5657c8b, type: 3}
     - {fileID: 8300000, guid: e95a161cd3ab9f34d8eb8022d20f1c19, type: 3}
+  - name: LowTimer
+    Sounds: []
   audioSource: {fileID: 1728663644}
   volumeSlider: {fileID: 1079520300}
 --- !u!82 &1728663644

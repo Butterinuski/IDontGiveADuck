@@ -336,6 +336,7 @@ public class UIManager : MonoBehaviour
             if (pausePanel != null)
             {
                 pausePanel.SetActive(true);
+                HideHUDElements();
             }
         }
     }
