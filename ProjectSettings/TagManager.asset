@@ -6,6 +6,8 @@ TagManager:
   tags:
   - GoodDuck
   - DecoyDuck
+  - PointA
+  - PointB
   layers:
   - Default
   - TransparentFX

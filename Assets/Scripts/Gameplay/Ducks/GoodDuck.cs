@@ -22,6 +22,7 @@ public class GoodDuck : BaseDuck
     
     protected override void OnClicked()
     {
+        SoundManager.PlaySound(SoundType.ClickSound);
         Debug.Log($"Good duck clicked! Awarded {pointValue} points");
         //ParticleSystem effect = Instantiate(waterParticles, transform.position, transform.rotation);
         
