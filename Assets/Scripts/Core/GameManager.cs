@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -39,7 +41,9 @@ public class GameManager : MonoBehaviour
     private GameState currentState = GameState.Menu;    // Current game state
     private float levelStartTime;                       // When the level started
     private int totalDucksSpawned = 0;                  // Total ducks spawned this level
-    
+    [SerializeField] private ParticleSystem waterParticles;
+    public BackgroundSwitch BS;
+
     // Events that other systems can subscribe to
     // This creates loose coupling between systems
     public System.Action<int> OnScoreChanged;           // Fired when score changes
@@ -89,6 +93,10 @@ public class GameManager : MonoBehaviour
         {
             UpdateGameTimer();
         }
+        if (timeLeft == 10f)
+        {
+            SoundManager.PlaySound(SoundType.LowTimer);
+        }
     }
     
     #endregion
@@ -105,11 +113,11 @@ public class GameManager : MonoBehaviour
         score = 0;
         currentState = GameState.Menu;
     }
-    
+
     #endregion
-    
+
     #region Level Management
-    
+
     /// <summary>
     /// Loads the current level data and resets level-specific variables
     /// 
@@ -118,6 +126,8 @@ public class GameManager : MonoBehaviour
     /// 2. Resets level-specific counters
     /// 3. Notifies other systems about the new level
     /// </summary>
+    /// 
+    
     private void LoadCurrentLevel()
     {
         if (LevelLoader.Instance == null)
@@ -128,7 +138,8 @@ public class GameManager : MonoBehaviour
         
         // Load level data from JSON file
         currentLevel = LevelLoader.Instance.LoadLevel(currentLevelId);
-        
+        BS.ChangeBackground();
+
         if (currentLevel == null)
         {
             Debug.LogError($"Failed to load level {currentLevelId}");
@@ -383,7 +394,10 @@ public class GameManager : MonoBehaviour
         
         score += duck.PointValue;
         goodDucksClicked++;
-        
+        SoundManager.PlaySound(SoundType.GoodDucks);
+        SoundManager.PlaySound(SoundType.WaterParticle);
+        //ParticleSystem effect = Instantiate(waterParticles, transform.position, transform.rotation);
+
         OnScoreChanged?.Invoke(score);
         
         // Check win condition - player got required good ducks
@@ -416,6 +430,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void OnDecoyDuckClicked(DecoyDuck duck)
     {
+        SoundManager.PlaySound(SoundType.BadDucks);
         if (currentState != GameState.Playing) return;
         
         // Apply time penalty from level configuration

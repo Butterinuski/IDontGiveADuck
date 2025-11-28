@@ -330,8 +330,15 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void ShowPausePanel()
     {
-        if (pausePanel != null)
-            pausePanel.SetActive(true);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Hit escape");
+            if (pausePanel != null)
+            {
+                pausePanel.SetActive(true);
+                HideHUDElements();
+            }
+        }
     }
     
     /// <summary>

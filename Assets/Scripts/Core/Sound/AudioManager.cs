@@ -30,10 +30,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip challengeTheme; // Music for challenging levels
     [SerializeField] private AudioClip bossTheme;      // Music for boss levels
     
-    [Header("UI Sounds")]
-    [SerializeField] private AudioClip levelStartSound;    // Sound when level begins
-    [SerializeField] private AudioClip levelCompleteSound; // Sound when level is won
-    [SerializeField] private AudioClip gameOverSound;      // Sound when level is lost
+    //[Header("UI Sounds")]
+    //[SerializeField] private AudioClip levelStartSound;    // Sound when level begins
+    //[SerializeField] private AudioClip levelCompleteSound; // Sound when level is won
+    //[SerializeField] private AudioClip gameOverSound;      // Sound when level is lost
     
     //[Header("Duck Sounds")]
     //[SerializeField] private AudioClip duckClickDecoySound; // Sound when clicking decoy duck
@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
         // Subscribe to game events for automatic audio responses
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
+            //GameManager.Instance.OnGameStateChanged += OnGameStateChanged;
             GameManager.Instance.OnLevelLoaded += OnLevelLoaded;
         }
         
@@ -83,7 +83,7 @@ public class AudioManager : MonoBehaviour
         // Unsubscribe from events to prevent memory leaks
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
+            //GameManager.Instance.OnGameStateChanged -= OnGameStateChanged;
             GameManager.Instance.OnLevelLoaded -= OnLevelLoaded;
         }
     }
@@ -208,26 +208,26 @@ public class AudioManager : MonoBehaviour
     /// The audio system automatically responds to game events
     /// without needing direct calls from other systems
     /// </summary>
-    private void OnGameStateChanged(GameState newState)
-    {
-        switch (newState)
-        {
-            case GameState.Menu:
-                PlayMusic(menuMusic);
-                break;
-            case GameState.Playing:
-                PlayUISFX(levelStartSound);
-                break;
-            case GameState.LevelComplete:
-                PlayUISFX(levelCompleteSound);
-                PlayMusic(victoryMusic);
-                break;
-            case GameState.GameOver:
-                PlayUISFX(gameOverSound);
-                PlayMusic(gameOverMusic);
-                break;
-        }
-    }
+    //private void OnGameStateChanged(GameState newState)
+    //{
+    //    switch (newState)
+    //    {
+    //        case GameState.Menu:
+    //            PlayMusic(menuMusic);
+    //            break;
+    //        case GameState.Playing:
+    //            PlayUISFX(levelStartSound);
+    //            break;
+    //        case GameState.LevelComplete:
+    //            PlayUISFX(levelCompleteSound);
+    //            PlayMusic(victoryMusic);
+    //            break;
+    //        case GameState.GameOver:
+    //            PlayUISFX(gameOverSound);
+    //            PlayMusic(gameOverMusic);
+    //            break;
+    //    }
+    //}
     
     /// <summary>
     /// Changes music based on the loaded level

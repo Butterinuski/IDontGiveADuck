@@ -8,7 +8,6 @@ public class GoodDuck : BaseDuck
     [Header("Good Duck Settings")]
     [SerializeField] private ParticleSystem successParticles;
     [SerializeField] private GameObject successTextPrefab; // Optional floating text
-    [SerializeField] private ParticleSystem waterParticles;
 
     [Header("Visual Feedback")]
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -17,16 +16,16 @@ public class GoodDuck : BaseDuck
     protected override void Start()
     {
         base.Start();
-        
     }
     
     #region Abstract Implementation
     
     protected override void OnClicked()
     {
+        SoundManager.PlaySound(SoundType.ClickSound);
         Debug.Log($"Good duck clicked! Awarded {pointValue} points");
-        ParticleSystem effect = Instantiate(waterParticles, transform.position, transform.rotation);
-        SoundManager.PlaySound(SoundType.GoodDucks);
+        //ParticleSystem effect = Instantiate(waterParticles, transform.position, transform.rotation);
+        
 
         // Notify game manager
         if (GameManager.Instance != null)
@@ -35,7 +34,7 @@ public class GoodDuck : BaseDuck
         }
         
         // Play success feedback
-        PlaySuccessEffects();
+        //PlaySuccessEffects();
         
         // Destroy duck
         DestroyDuck();
@@ -93,10 +92,10 @@ public class GoodDuck : BaseDuck
         }
         
         // Sound effect - use AudioManager for consistency
-        if (AudioManager.Instance != null)
-        {
-            AudioManager.Instance.PlayDuckClickGood(transform.position);
-        }
+        //if (AudioManager.Instance != null)
+        //{
+        //    SoundManager.Instance.PlayDuckClickGood(transform.position);
+        //}
         
         // Floating score text (optional)
         if (successTextPrefab != null)
