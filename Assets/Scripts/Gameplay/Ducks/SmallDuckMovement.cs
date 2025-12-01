@@ -1,10 +1,10 @@
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
-public class DuckMovement : MonoBehaviour
+public class SmallDuckMovement : MonoBehaviour
 {
-    public Transform PointA;
-    public Transform PointB;
+    public Transform PointC;
+    public Transform PointD;
     private Rigidbody2D rb;
     private Transform currentPoint;
     public float speed;
@@ -12,13 +12,13 @@ public class DuckMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        currentPoint = PointB;
+        currentPoint = PointD;
     }
 
     private void Awake()
     {
-        PointA = GameObject.FindWithTag("PointA").transform;
-        PointB = GameObject.FindWithTag("PointB").transform;
+        PointC = GameObject.FindWithTag("PointC").transform;
+        PointD = GameObject.FindWithTag("PointD").transform;
 
         Debug.Log("PointA found");
         Debug.Log("PointB found");
@@ -30,18 +30,18 @@ public class DuckMovement : MonoBehaviour
         Vector2 direction = (currentPoint.position - transform.position).normalized;
         rb.linearVelocity = direction * speed;
 
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointB.transform)
+        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointD.transform)
         {
             Debug.Log("we reached a point");
             Flip();
-            currentPoint = PointA.transform;
+            currentPoint = PointC.transform;
 
         }
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointA.transform)
+        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointC.transform)
         {
             Debug.Log("we reached a point");
             Flip();
-            currentPoint = PointB.transform;
+            currentPoint = PointD.transform;
         }
     }
 
@@ -54,12 +54,8 @@ public class DuckMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(PointA.transform.position, 0.5f);
-        Gizmos.DrawWireSphere(PointB.transform.position, 0.5f);
-        Gizmos.DrawLine(PointA.transform.position, PointB.transform.position);
+        Gizmos.DrawWireSphere(PointC.transform.position, 0.5f);
+        Gizmos.DrawWireSphere(PointD.transform.position, 0.5f);
+        Gizmos.DrawLine(PointC.transform.position, PointD.transform.position);
     }
-
-    
-
-    
 }

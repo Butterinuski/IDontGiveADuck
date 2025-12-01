@@ -184,6 +184,7 @@ public abstract class BaseDuck : MonoBehaviour
         {
             // Create effect at duck position
             ParticleSystem effect = Instantiate(destroyEffect, transform.position, transform.rotation);
+            SuccessText.Instance.PointDisplay(pointValue);
             Destroy(effect.gameObject, effect.main.duration);
         }
         

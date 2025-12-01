@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5640780115888115071}
   - component: {fileID: 4603626279781314114}
   - component: {fileID: 7167406683523040666}
-  - component: {fileID: 5556826704848971153}
+  - component: {fileID: -3699115168289870690}
   m_Layer: 0
   m_Name: GoodDuck_S
   m_TagString: GoodDuck
@@ -77,9 +77,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -847376941
+  m_SortingLayer: 1
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 4884e57a5613e884f9be4ba44ef49901, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -152,10 +152,10 @@ MonoBehaviour:
   pointValue: 30
   lifetime: 5
   moveSpeed: 0
-  destroyEffect: {fileID: 4339894006172115835, guid: d6a0edbfea90dc94ebc7aba187d4ba7d, type: 3}
+  destroyEffect: {fileID: 0}
   clickSound: {fileID: 0}
-  successParticles: {fileID: 0}
-  successTextPrefab: {fileID: 0}
+  successParticles: {fileID: 5428359425221970757, guid: 5e8402cd94e85314ea2f69f44d780ff5, type: 3}
+  successTextPrefab: {fileID: 7215751449835752234, guid: e775fde06edf0a14e95f97552cba30c3, type: 3}
   spriteRenderer: {fileID: 1339619373891858794}
 --- !u!50 &7167406683523040666
 Rigidbody2D:
@@ -184,7 +184,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &5556826704848971153
+--- !u!114 &-3699115168289870690
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,9 +193,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1115852952343671650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 554e547b9dcd3e547947bed6444262c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 901b65f6c5ca0aa4783fdd58dbf29f65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointA: {fileID: 0}
-  PointB: {fileID: 0}
+  PointC: {fileID: 0}
+  PointD: {fileID: 0}
   speed: 10

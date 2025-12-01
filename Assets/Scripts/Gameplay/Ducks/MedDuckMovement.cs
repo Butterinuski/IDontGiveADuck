@@ -1,10 +1,10 @@
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
-public class DuckMovement : MonoBehaviour
+public class MedDuckMovement : MonoBehaviour
 {
-    public Transform PointA;
-    public Transform PointB;
+    public Transform PointE;
+    public Transform PointF;
     private Rigidbody2D rb;
     private Transform currentPoint;
     public float speed;
@@ -12,16 +12,16 @@ public class DuckMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        currentPoint = PointB;
+        currentPoint = PointF;
     }
 
     private void Awake()
     {
-        PointA = GameObject.FindWithTag("PointA").transform;
-        PointB = GameObject.FindWithTag("PointB").transform;
+        PointE = GameObject.FindWithTag("PointE").transform;
+        PointF = GameObject.FindWithTag("PointF").transform;
 
-        Debug.Log("PointA found");
-        Debug.Log("PointB found");
+        Debug.Log("PointE found");
+        Debug.Log("PointF found");
     }
 
     // Update is called once per frame
@@ -30,18 +30,18 @@ public class DuckMovement : MonoBehaviour
         Vector2 direction = (currentPoint.position - transform.position).normalized;
         rb.linearVelocity = direction * speed;
 
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointB.transform)
+        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointF.transform)
         {
             Debug.Log("we reached a point");
             Flip();
-            currentPoint = PointA.transform;
+            currentPoint = PointE.transform;
 
         }
-        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointA.transform)
+        if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointE.transform)
         {
             Debug.Log("we reached a point");
             Flip();
-            currentPoint = PointB.transform;
+            currentPoint = PointF.transform;
         }
     }
 
@@ -54,12 +54,8 @@ public class DuckMovement : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(PointA.transform.position, 0.5f);
-        Gizmos.DrawWireSphere(PointB.transform.position, 0.5f);
-        Gizmos.DrawLine(PointA.transform.position, PointB.transform.position);
+        Gizmos.DrawWireSphere(PointE.transform.position, 0.5f);
+        Gizmos.DrawWireSphere(PointF.transform.position, 0.5f);
+        Gizmos.DrawLine(PointE.transform.position, PointF.transform.position);
     }
-
-    
-
-    
 }

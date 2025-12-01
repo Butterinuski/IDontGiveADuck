@@ -24,7 +24,7 @@ public class GoodDuck : BaseDuck
     {
         SoundManager.PlaySound(SoundType.ClickSound, 1f);
         Debug.Log($"Good duck clicked! Awarded {pointValue} points");
-        //ParticleSystem effect = Instantiate(waterParticles, transform.position, transform.rotation);
+        PlaySuccessEffects();
         
 
         // Notify game manager
@@ -91,16 +91,11 @@ public class GoodDuck : BaseDuck
             Destroy(effect.gameObject, effect.main.duration);
         }
         
-        // Sound effect - use AudioManager for consistency
-        //if (AudioManager.Instance != null)
-        //{
-        //    SoundManager.Instance.PlayDuckClickGood(transform.position);
-        //}
-        
         // Floating score text (optional)
         if (successTextPrefab != null)
         {
             GameObject scoreText = Instantiate(successTextPrefab, transform.position, Quaternion.identity);
+            Destroy(scoreText.gameObject, 1f);
             // Assume the prefab has a script to handle floating animation
         }
     }
