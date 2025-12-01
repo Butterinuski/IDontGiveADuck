@@ -51,6 +51,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject instructionsPanel;   // Container for game instructions
     [SerializeField] private Button startGameButton;         // Button to start the game
     [SerializeField] private Button testLevel12Button;       // Button to jump to test level
+
+    [Header("Mid-game panel")]
     
     // ===== DEVELOPMENT TOOLS =====
     // These settings help during development and testing

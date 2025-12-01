@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     private int totalDucksSpawned = 0;                  // Total ducks spawned this level
     [SerializeField] private ParticleSystem waterParticles;
     public BackgroundSwitch BS;
+    public bool timerLow;
 
     // Events that other systems can subscribe to
     // This creates loose coupling between systems
@@ -72,6 +73,8 @@ public class GameManager : MonoBehaviour
             // Destroy duplicate instances
             Destroy(gameObject);
         }
+
+        timerLow = false;
     }
     
     /// <summary>
@@ -95,7 +98,12 @@ public class GameManager : MonoBehaviour
         }
         if (timeLeft == 10f)
         {
-            SoundManager.PlaySound(SoundType.LowTimer);
+            timerLow = true;
+            if(timerLow == true)
+            {
+                SoundManager.PlaySound(SoundType.LowTimer);
+                timerLow = false;
+            }
         }
     }
     
@@ -430,7 +438,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void OnDecoyDuckClicked(DecoyDuck duck)
     {
-        SoundManager.PlaySound(SoundType.BadDucks);
+        SoundManager.PlaySound(SoundType.BadDucks, 1f);
         if (currentState != GameState.Playing) return;
         
         // Apply time penalty from level configuration
@@ -493,6 +501,11 @@ public class GameManager : MonoBehaviour
     {
         timeLeft -= Time.deltaTime;
         OnTimeChanged?.Invoke(timeLeft);
+
+        if(timeLeft <= 10)
+        {
+            SoundManager.PlaySound(SoundType.LowTimer, 1f);
+        }
         
         // Check if time ran out
         if (timeLeft <= 0)

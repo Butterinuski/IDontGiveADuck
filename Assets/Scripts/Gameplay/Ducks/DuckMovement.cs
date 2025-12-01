@@ -27,16 +27,8 @@ public class DuckMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 point = (currentPoint.position - transform.position).normalized;
-        if (currentPoint == PointB.transform)
-        {
-            Debug.Log("We shmoovin");
-            rb.velocity = new Vector2(speed, 1);
-        }
-        else
-        {
-            rb.velocity = new Vector2(-speed, -1);
-        }
+        Vector2 direction = (currentPoint.position - transform.position).normalized;
+        rb.velocity = direction * speed;
 
         if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointB.transform)
         {
@@ -66,6 +58,34 @@ public class DuckMovement : MonoBehaviour
         Gizmos.DrawWireSphere(PointB.transform.position, 0.5f);
         Gizmos.DrawLine(PointA.transform.position, PointB.transform.position);
     }
+
+    //public void Movement()
+    //{
+    //    Vector2 point = (currentPoint.position - transform.position).normalized;
+    //    if (currentPoint == PointB.transform)
+    //    {
+    //        Debug.Log("We shmoovin");
+    //        rb.velocity = new Vector2(speed, 1);
+    //    }
+    //    else
+    //    {
+    //        rb.velocity = new Vector2(-speed, -1);
+    //    }
+
+    //    if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointB.transform)
+    //    {
+    //        Debug.Log("we reached a point");
+    //        Flip();
+    //        currentPoint = PointA.transform;
+
+    //    }
+    //    if (Vector2.Distance(transform.position, currentPoint.position) < 0.5f && currentPoint == PointA.transform)
+    //    {
+    //        Debug.Log("we reached a point");
+    //        Flip();
+    //        currentPoint = PointB.transform;
+    //    }
+    //}
 
     
 }
