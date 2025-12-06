@@ -1,8 +1,9 @@
-using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 public enum SoundType
 {
@@ -23,6 +24,9 @@ public class SoundManager : MonoBehaviour
     private static SoundManager instance;
     public AudioSource audioSource;
     [SerializeField] Slider volumeSlider;
+
+    public AudioSource sfxSource;        
+    public AudioSource lowTimerSource;
 
     //public Slider VolumeSlider;
 
@@ -65,10 +69,18 @@ public class SoundManager : MonoBehaviour
     {
         AudioClip[] clips = instance.soundlist[(int)Sound].sounds;
         AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
-        instance.audioSource.PlayOneShot(randomClip, volume);
-
-        //instance.audioSource.PlayOneShot(instance.soundlist[(int)sound], volume);
+        if (Sound == SoundType.LowTimer)
+        {
+            instance.lowTimerSource.clip = clip;
+            instance.lowTimerSource.volume = volume;
+            instance.lowTimerSource.Play();
+        }
+        else
+        {
+            instance.sfxSource.PlayOneShot(clip, volume);
+        }
     }
+
 
 
 

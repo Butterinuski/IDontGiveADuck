@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         {
             UpdateGameTimer();
         }
-        if (timeLeft == 10f)
+        if (timeLeft <= 10f && !timerLow)
         {
             timerLow = true;
             if(timerLow == true)
