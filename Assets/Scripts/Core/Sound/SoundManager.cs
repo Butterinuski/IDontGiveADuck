@@ -69,16 +69,7 @@ public class SoundManager : MonoBehaviour
     {
         AudioClip[] clips = instance.soundlist[(int)Sound].sounds;
         AudioClip randomClip = clips[UnityEngine.Random.Range(0, clips.Length)];
-        if (Sound == SoundType.LowTimer)
-        {
-            instance.lowTimerSource.clip = clip;
-            instance.lowTimerSource.volume = volume;
-            instance.lowTimerSource.Play();
-        }
-        else
-        {
-            instance.sfxSource.PlayOneShot(clip, volume);
-        }
+        instance.audioSource.PlayOneShot(randomClip, volume);
     }
 
 

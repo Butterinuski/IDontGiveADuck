@@ -96,15 +96,7 @@ public class GameManager : MonoBehaviour
         {
             UpdateGameTimer();
         }
-        if (timeLeft <= 10f && !timerLow)
-        {
-            timerLow = true;
-            if(timerLow == true)
-            {
-                SoundManager.PlaySound(SoundType.LowTimer);
-                timerLow = false;
-            }
-        }
+       
     }
     
     #endregion
